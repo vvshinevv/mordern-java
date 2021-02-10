@@ -1,19 +1,27 @@
 package cc.hongs.example;
 
-public class OopAnotherExample {
+public class OopAndFpAnotherExample {
     public static void main(String[] args) {
         final CalculatorService calculatorService = new CalculatorService(new Addition(), new Subtraction());
-        final int additionResult = calculatorService.calculate(1, 1);
+        final int additionResult = calculatorService.calculate(11, 4);
         System.out.println(additionResult);
 
-        final int subtractionResult = calculatorService.calculate(1, 1);
+        final int subtractionResult = calculatorService.calculate(11, 1);
         System.out.println(subtractionResult);
 
-        final int multiplicationResult = calculatorService.calculate(1, 1);
+        final int multiplicationResult = calculatorService.calculate(11, 2);
         System.out.println(multiplicationResult);
 
-        final int divisionResult = calculatorService.calculate(8, 4);
+        final int divisionResult = calculatorService.calculate(20, 4);
         System.out.println(divisionResult);
+
+        // first class citizen
+        FpCalculationService fpCalculationService = new FpCalculationService();
+        System.out.println("addition: " + fpCalculationService.calculate(Integer::sum, 11, 2));
+        System.out.println("subtraction: " + fpCalculationService.calculate((num1, num2) -> num1 - num2, 11, 2));
+        System.out.println("multiplication: " + fpCalculationService.calculate((num1, num2) -> num1 * num2, 11, 2));
+        System.out.println("division: " + fpCalculationService.calculate((num1, num2) -> num1 / num2, 20, 4));
+        System.out.println("custom: " + fpCalculationService.calculate((num1, num2) -> (num1 + num2) * 2, 20, 4));
     }
 }
 
@@ -68,6 +76,15 @@ class CalculatorService {
     public int compute(int num1, int num2) {
         if (num1 > 10 && num2 < num1) {
             return calculation2.calculate(num1, num2);
+        }
+        throw new IllegalArgumentException("Invalid input num1 : " + num1 + ", num2 : " + num2);
+    }
+}
+
+class FpCalculationService {
+    public int calculate(Calculation calculation, int num1, int num2) {
+        if (num1 > 10 && num2 < num1) {
+            return calculation.calculate(num1, num2);
         }
         throw new IllegalArgumentException("Invalid input num1 : " + num1 + ", num2 : " + num2);
     }
