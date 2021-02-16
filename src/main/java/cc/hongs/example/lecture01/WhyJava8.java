@@ -1,4 +1,4 @@
-package cc.hongs.example;
+package cc.hongs.example.lecture01;
 
 import java.util.Arrays;
 import java.util.List;

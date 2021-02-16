@@ -1,5 +1,10 @@
 package cc.hongs.example;
 
+import cc.hongs.example.lecture01.Addition;
+import cc.hongs.example.lecture01.Calculation;
+import cc.hongs.example.lecture01.Division;
+import cc.hongs.example.lecture01.Multiplication;
+import cc.hongs.example.lecture01.Subtraction;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

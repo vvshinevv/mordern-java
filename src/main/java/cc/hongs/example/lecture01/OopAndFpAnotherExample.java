@@ -1,4 +1,4 @@
-package cc.hongs.example;
+package cc.hongs.example.lecture01;
 
 public class OopAndFpAnotherExample {
     public static void main(String[] args) {
